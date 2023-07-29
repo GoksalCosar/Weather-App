@@ -1,16 +1,63 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+{% extends 'base.html.twig' %}
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+{% block stylesheets %}
+    <!-- Font Awesome -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{{ asset('assets/css/mdb.min.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+
+    <section class="vh-100" style="background-color: #4B515D;">
+        <div class="container py-5 h-100">
+
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+
+                    <div class="card" style="color: #4B515D; border-radius: 35px;">
+                        <div class="card-body p-4">
+
+                            <div class="d-flex">
+                                <h6 class="flex-grow-1">{{ formatedWeatherData["Şehir"] }}</h6>
+                                <h6>{{ formatedWeatherData["Zaman"] }}</h6>
+                            </div>
+
+                            <div class="d-flex flex-column text-center mt-5 mb-4">
+                                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{ formatedWeatherData["Sıcaklık"] }}°C </h6>
+                                <span class="small" style="color: #868B94">{{ formatedWeatherData["Gökyüzü"] }}</span>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1" style="font-size: 1rem;">
+                                    <div><i class="fas fa-thermometer-three-quarters" style="color: #868B94;"></i> <span class="ms-1">Hissedilen Sıcaklık : {{ formatedWeatherData["Hissedilen"] }}°C</span></div>
+                                    <div><i class="fas fa-temperature-high" style="color: #868B94;"></i> <span class="ms-1">En Yüksek Sıcaklık : {{ formatedWeatherData["Maksimum"] }}°C</span></div>
+                                    <div><i class="fas fa-thermometer-empty" style="color: #868B94;"></i> <span class="ms-1">En Düşük Sıcaklık : {{ formatedWeatherData["Minimum"] }}°C</span></div>
+                                    <div><i class="fas fa-tint" style="color: #868B94;"></i> <span class="ms-1">Nem Oranı : {{ formatedWeatherData["Nem"] }}% </span></div>
+                                </div>
+                                <div>
+                                    <img width="64" height="64" src="{{ formatedWeatherData["GökyüzüImg"] }}" alt="external-clear-sky-weather-kosonicon-flat-kosonicon"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="{{ asset('assets/js/mdb.min.js') }}"></script>
+
+{% endblock %}
