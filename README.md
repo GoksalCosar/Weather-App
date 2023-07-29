@@ -5,4 +5,10 @@ gerekmektedir.
 
 OpenWeather Url = https://home.openweathermap.org/
 
+Proje Kurulumu:
+
+- cd Weather-App
+- composer install
+- symfony server:start
+
 ![img.png](img.png)
